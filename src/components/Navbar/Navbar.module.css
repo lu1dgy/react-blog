@@ -1,0 +1,14 @@
+.nav {
+  grid-area: nav;
+  background-color: burlywood;
+}
+
+.list {
+  list-style-type: none;
+}
+
+
+.link {
+  color: #fff;
+  text-decoration: none;
+}
