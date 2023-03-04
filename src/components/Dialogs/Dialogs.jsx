@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem'
 import Message from './Message/Message'
-import { sendMessageCreator, updateNewMessageTextCreator } from '../../redux/state'
+import { sendMessageCreator, updateNewMessageTextCreator } from '../../redux/dialogsReducer'
 
 const Dialogs = (props) => {
   const dialogsElements = props.state.dialogs.map((d) => (
@@ -29,8 +29,9 @@ const Dialogs = (props) => {
 
   return (
     <div className={styles.dialogs}>
-      <div className={styles.dialogsItems}>
-        <div>{dialogsElements}</div>
+      <div className={styles.dialogsItems}>{dialogsElements}</div>
+      <div className={styles.messages}>
+        <div>{messagesElements}</div>
         <div>
           <div>
             <textarea
@@ -43,7 +44,6 @@ const Dialogs = (props) => {
           </div>
         </div>
       </div>
-      <div className={styles.messages}>{messagesElements}</div>
     </div>
   )
 }
