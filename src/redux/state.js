@@ -1,4 +1,9 @@
-let store = {
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT'
+const SEND_MESSAGE = 'SEND_MESSAGE'
+
+const store = {
   _state: {
     profilePage: {
       posts: [
@@ -7,7 +12,7 @@ let store = {
         { id: 3, message: 'Blabla', likesCount: 11 },
         { id: 4, message: 'Dada', likesCount: 11 },
       ],
-      newPostText: 'it-kamasutra.com',
+      newPostText: '',
     },
     dialogsPage: {
       dialogs: [
@@ -25,6 +30,7 @@ let store = {
         { id: 4, message: 'Yo' },
         { id: 5, message: 'Yo' },
       ],
+      newMessageText: '',
     },
     sidebar: {},
   },
@@ -35,14 +41,14 @@ let store = {
   getState() {
     return this._state
   },
+
   subscribe(observer) {
-    this._callSubscriber = observer // observer
+    this._callSubscriber = observer
   },
 
   dispatch(action) {
-    // { type: 'ADD-POST' }
-    if (action.type === 'ADD-POST') {
-      let newPost = {
+    if (action.type === ADD_POST) {
+      const newPost = {
         id: 5,
         message: this._state.profilePage.newPostText,
         likesCount: 0,
@@ -50,13 +56,32 @@ let store = {
       this._state.profilePage.posts.push(newPost)
       this._state.profilePage.newPostText = ''
       this._callSubscriber(this._state)
-    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+    } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this._state.profilePage.newPostText = action.newText
+      this._callSubscriber(this._state)
+    } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
+      this._state.dialogsPage.newMessageText = action.newText
+      this._callSubscriber(this._state)
+    } else if (action.type === SEND_MESSAGE) {
+      let messageText = this._state.dialogsPage.newMessageText
+      this._state.dialogsPage.newMessageText = ''
+      this._state.dialogsPage.messages.push({ id: 6, message: messageText })
       this._callSubscriber(this._state)
     }
   },
 }
 
+export const addPostCreator = () => ({ type: ADD_POST })
+export const updateNewPostTextCreator = (text) => ({
+  type: UPDATE_NEW_POST_TEXT,
+  newText: text,
+})
+
+export const sendMessageCreator = () => ({ type: SEND_MESSAGE })
+export const updateNewMessageTextCreator = (text) => ({
+  type: UPDATE_NEW_MESSAGE_TEXT,
+  newText: text,
+})
+
 export default store
 window.store = store
-// store - OOP

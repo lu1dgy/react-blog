@@ -1,37 +1,32 @@
 import React from 'react'
-import s from './MyPosts.module.css'
+import { addPostCreator, updateNewPostTextCreator } from '../../../redux/state'
+import styles from './MyPosts.module.css'
 import Post from './Post/Post'
 
 const MyPosts = (props) => {
-  let postsElements = props.posts.map((p) => (
+  const postsElements = props.posts.map((p, i) => (
     <Post
+      key={i}
       message={p.message}
       likesCount={p.likesCount}
     />
   ))
 
-  let newPostElement = React.createRef()
-
-  let addPost = () => {
-    //props.addPost();
-    props.dispatch({ type: 'ADD-POST' })
+  const addPost = () => {
+    props.dispatch(addPostCreator())
   }
 
-  let onPostChange = () => {
-    let text = newPostElement.current.value
-    //props.updateNewPostText(text);
-    let action = { type: 'UPDATE-NEW-POST-TEXT', newText: text }
-    props.dispatch(action)
+  const onPostChange = (e) => {
+    props.dispatch(updateNewPostTextCreator(e.target.value))
   }
 
   return (
-    <div className={s.postsBlock}>
+    <div className={styles.postsBlock}>
       <h3>My posts</h3>
       <div>
         <div>
           <textarea
             onChange={onPostChange}
-            ref={newPostElement}
             value={props.newPostText}
           />
         </div>
@@ -39,7 +34,7 @@ const MyPosts = (props) => {
           <button onClick={addPost}>Add post</button>
         </div>
       </div>
-      <div className={s.posts}>{postsElements}</div>
+      <div className={styles.posts}>{postsElements}</div>
     </div>
   )
 }

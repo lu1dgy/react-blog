@@ -1,11 +1,11 @@
 import React from 'react'
-import s from './Post.module.css'
+import styles from './Post.module.css'
 
 const Post = (props) => {
   return (
-    <div className={s.item}>
+    <div className={styles.item}>
       <img
-        src='https://movies4maniacs.liberty.me/wp-content/uploads/sites/1218/2015/09/avatarsucks.jpg'
+        src='https://www.creativefabrica.com/wp-content/uploads/2021/07/12/Golden-retriever-svg-file-Dog-svg-Graphics-14607561-2-580x387.jpg'
         alt='postImage'
       />
       {props.message}
