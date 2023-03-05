@@ -7,21 +7,23 @@ import './index.css'
 
 import store from './redux/store'
 import App from './App'
+import { Provider } from './StoreContext'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
-let rerenderEntireTree = (state) => {
+let rerenderEntireTree = () => {
   root.render(
     <BrowserRouter>
-      <App
-        state={state}
-        dispatch={store.dispatch.bind(store)}
-      />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </BrowserRouter>
   )
 }
 
 rerenderEntireTree(store.getState())
 
-store.subscribe(rerenderEntireTree)
+store.subscribe(() => {
+  rerenderEntireTree()
+})
 
 serviceWorker.unregister()
