@@ -12,7 +12,7 @@ const initialState = {
   ],
   messages: [
     { id: 1, message: 'Hi' },
-    { id: 2, message: 'How is your it-kamasutra?' },
+    { id: 2, message: 'How are you?' },
     { id: 3, message: 'Yo' },
     { id: 4, message: 'Yo' },
     { id: 5, message: 'Yo' },
@@ -22,14 +22,19 @@ const initialState = {
 
 export const dialogs = (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_NEW_MESSAGE_TEXT:
-      state.newMessageText = action.newText
-      return state
-    case SEND_MESSAGE:
-      const messageText = state.newMessageText
-      state.newMessageText = ''
-      state.messages.push({ id: 6, message: messageText })
-      return state
+    case UPDATE_NEW_MESSAGE_TEXT: {
+      const stateCopy = { ...state }
+      stateCopy.newMessageText = action.newText
+      return stateCopy
+    }
+    case SEND_MESSAGE: {
+      const stateCopy = { ...state }
+      const messageText = stateCopy.newMessageText
+      stateCopy.newMessageText = ''
+      stateCopy.messages = [...state.messages]
+      stateCopy.messages.push({ id: 6, message: messageText })
+      return stateCopy
+    }
     default:
       return state
   }

@@ -9,20 +9,12 @@ import store from './redux/store'
 import App from './App'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
-let rerenderEntireTree = () => {
-  root.render(
-    <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </BrowserRouter>
-  )
-}
-
-rerenderEntireTree()
-
-store.subscribe(() => {
-  rerenderEntireTree()
-})
+root.render(
+  <BrowserRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </BrowserRouter>
+)
 
 serviceWorker.unregister()
