@@ -1,29 +1,50 @@
-import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { sendMessageCreator, updateNewMessageTextCreator } from '../../redux/reducers/dialogs'
-import StoreContext from '../../StoreContext'
 import Dialogs from './Dialogs'
 
 const DialogsContainer = () => {
+  const dispatch = useDispatch()
+  const dialogs = useSelector((state) => state.dialogs)
+
+  const sendMessage = () => {
+    dispatch(sendMessageCreator())
+  }
+
+  const updateNewMessageText = (text) => {
+    dispatch(updateNewMessageTextCreator(text))
+  }
+
   return (
-    <StoreContext.Consumer>
-      {(store) => {
-        const state = store.getState().dialogs
-        const sendMessage = () => {
-          store.dispatch(sendMessageCreator())
-        }
-        const onNewMessageChange = (text) => {
-          store.dispatch(updateNewMessageTextCreator(text))
-        }
-        return (
-          <Dialogs
-            sendMessage={sendMessage}
-            updateNewMessageText={onNewMessageChange}
-            dialogs={state}
-          />
-        )
-      }}
-    </StoreContext.Consumer>
+    <Dialogs
+      dialogs={dialogs}
+      sendMessage={sendMessage}
+      updateNewMessageText={updateNewMessageText}
+    />
   )
 }
 
 export default DialogsContainer
+
+// import { connect } from 'react-redux'
+// import { sendMessageCreator, updateNewMessageTextCreator } from '../../redux/reducers/dialogs'
+// import Dialogs from './Dialogs'
+
+// //It is legacy desision its better to use useSelector, but I learn it to support old apps
+// const mapStateToProps = (state) => {
+//   return {
+//     dialogs: state.dialogs,
+//   }
+// }
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     sendMessage: () => {
+//       dispatch(sendMessageCreator())
+//     },
+//     updateNewMessageText: (text) => {
+//       dispatch(updateNewMessageTextCreator(text))
+//     },
+//   }
+// }
+// const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
+
+// export default DialogsContainer
