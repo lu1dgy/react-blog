@@ -22,19 +22,20 @@ const initialState = {
 
 export const dialogs = (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_NEW_MESSAGE_TEXT: {
-      const stateCopy = { ...state }
-      stateCopy.newMessageText = action.newText
-      return stateCopy
-    }
-    case SEND_MESSAGE: {
-      const stateCopy = { ...state }
-      const messageText = stateCopy.newMessageText
-      stateCopy.newMessageText = ''
-      stateCopy.messages = [...state.messages]
-      stateCopy.messages.push({ id: 6, message: messageText })
-      return stateCopy
-    }
+    case UPDATE_NEW_MESSAGE_TEXT:
+      return {
+        ...state,
+        newMessageText: action.newText,
+      }
+
+    case SEND_MESSAGE:
+      const messageText = state.newMessageText
+      return {
+        ...state,
+        newMessageText: '',
+        messages: [...state.messages, { id: 6, message: messageText }],
+      }
+
     default:
       return state
   }
