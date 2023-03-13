@@ -5,16 +5,16 @@ import style from './Users.module.css'
 import defaultAvatar from '../../assets/images/default-avatar.jpg'
 
 function Users({ users, follow, unFollow, setUsers }) {
-  const getUsers = () => {
+  React.useEffect(() => {
     if (users.length === 0) {
       axios.get('https://social-network.samuraijs.com/api/1.0/users').then((res) => {
         setUsers(res.data.items)
       })
     }
-  }
+    // eslint-disable-next-line
+  }, [])
   return (
     <div className={style.userList}>
-      {users.length === 0 ? <button onClick={getUsers}>Get users</button> : ''}
       {users.map((user) => (
         <div
           key={user.id}
