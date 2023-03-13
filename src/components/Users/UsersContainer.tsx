@@ -1,19 +1,20 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
+import { User } from '../../redux/users/types'
+import { RootState } from '../../redux/store'
+import { follow, unFollow, setUsers } from '../../redux/users/users'
 import Users from './Users'
-import { follow, unFollow, setUsers } from '../../redux/reducers/users'
 
-const UsersContainer = () => {
+const UsersContainer: React.FC = () => {
   const dispatch = useDispatch()
-  const users = useSelector((state) => state.users.users)
-  const followUser = (userId) => {
+  const users = useSelector((state: RootState) => state.users.users)
+  const followUser = (userId: number) => {
     dispatch(follow(userId))
   }
-  const unFollowUser = (userId) => {
+  const unFollowUser = (userId: number) => {
     dispatch(unFollow(userId))
   }
-  const setArrOfUsers = (users) => {
+  const setArrOfUsers = (users: User[]) => {
     dispatch(setUsers(users))
   }
   return (

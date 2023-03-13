@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './ProfileInfo.module.css'
 
-const ProfileInfo = () => {
+const ProfileInfo: React.FC = () => {
   return (
     <div>
       <div>

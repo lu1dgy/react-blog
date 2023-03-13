@@ -2,17 +2,23 @@ import React from 'react'
 import styles from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem'
 import Message from './Message/Message'
+import { DialogsState } from '../../redux/dialogs/types'
 
-const Dialogs = (props) => {
-  const state = props.dialogs
-  const dialogsElements = state.dialogs.map((d) => (
+type UsersBlockProps = {
+  dialogs: DialogsState
+  sendMessage: Function
+  updateNewMessageText: Function
+}
+
+const Dialogs: React.FC<UsersBlockProps> = ({ dialogs, sendMessage, updateNewMessageText }) => {
+  const dialogsElements = dialogs.dialogs.map((d) => (
     <DialogItem
       key={d.id}
       name={d.name}
       id={d.id}
     />
   ))
-  const messagesElements = state.messages.map((m, i) => (
+  const messagesElements = dialogs.messages.map((m, i) => (
     <Message
       key={i}
       message={m.message}
@@ -20,11 +26,11 @@ const Dialogs = (props) => {
   ))
 
   const onSendMesageCLick = () => {
-    props.sendMessage()
+    sendMessage()
   }
-  const onNewMessageChange = (e) => {
+  const onNewMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const text = e.target.value
-    props.updateNewMessageText(text)
+    updateNewMessageText(text)
   }
 
   return (
@@ -35,7 +41,7 @@ const Dialogs = (props) => {
         <div>
           <div>
             <textarea
-              value={state.newMessageText}
+              value={dialogs.newMessageText}
               onChange={onNewMessageChange}
               placeholder='Enter message'></textarea>
           </div>

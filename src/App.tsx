@@ -9,7 +9,7 @@ import Header from './components/Header/Header'
 import DialogsContainer from './components/Dialogs/DialogsContainer'
 import UsersContainer from './components/Users/UsersContainer'
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <div className='app-wrapper'>
       <Header />

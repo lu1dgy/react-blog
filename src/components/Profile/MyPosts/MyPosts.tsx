@@ -1,23 +1,27 @@
 import React from 'react'
 import styles from './MyPosts.module.css'
-import Post from './Post/Post'
+import PostComponent from './Post/Post'
+import { Post } from '../../../redux/profile/types'
 
-const MyPosts = (props) => {
-  const postsElements = props.posts.map((p, i) => (
-    <Post
-      key={i}
+type MyPostsProps = {
+  posts: Post[]
+  newPostText: string
+  addPost: () => void
+  updateNewPostText: (text: string) => void
+}
+
+const MyPosts: React.FC<MyPostsProps> = ({ posts, newPostText, addPost, updateNewPostText }) => {
+  const postsElements = posts.map((p: Post, i: number) => (
+    <PostComponent
+      key={p.id}
       message={p.message}
       likesCount={p.likesCount}
     />
   ))
 
-  const addPost = () => {
-    props.addPost()
-  }
-
-  const onPostChange = (e) => {
+  const onPostChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const text = e.target.value
-    props.updateNewPostText(text)
+    updateNewPostText(text)
   }
 
   return (
@@ -27,7 +31,7 @@ const MyPosts = (props) => {
         <div>
           <textarea
             onChange={onPostChange}
-            value={props.newPostText}
+            value={newPostText}
           />
         </div>
         <div>

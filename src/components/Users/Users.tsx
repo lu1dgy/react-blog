@@ -1,10 +1,19 @@
 import React from 'react'
 import axios from 'axios'
 
-import style from './Users.module.css'
-import defaultAvatar from '../../assets/images/default-avatar.jpg'
+import { User } from '../../redux/users/types'
 
-function Users({ users, follow, unFollow, setUsers }) {
+import defaultAvatar from '../../assets/images/default-avatar.jpg'
+import style from './Users.module.css'
+
+type UsersBlockProps = {
+  users: User[]
+  follow: Function
+  unFollow: Function
+  setUsers: Function
+}
+
+const Users: React.FC<UsersBlockProps> = ({ users, follow, unFollow, setUsers }) => {
   React.useEffect(() => {
     if (users.length === 0) {
       axios.get('https://social-network.samuraijs.com/api/1.0/users').then((res) => {

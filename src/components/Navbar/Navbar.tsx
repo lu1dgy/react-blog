@@ -2,14 +2,14 @@ import React from 'react'
 import styles from './Navbar.module.css'
 import { NavLink } from 'react-router-dom'
 
-const Navbar = () => {
-  const activeLink = (link) => (link.isActive ? styles.activeLink : '')
+const Navbar: React.FC = () => {
+  const activeLink = (link: { isActive?: boolean }) => (link.isActive ? styles.activeLink : '')
   return (
     <nav className={styles.nav}>
       <div className={styles.item}>
         <NavLink
           to='/profile'
-          className={(link) => (link.isActive ? styles.activeLink : '')}>
+          className={(link: { isActive?: boolean }) => activeLink(link)}>
           Profile
         </NavLink>
       </div>

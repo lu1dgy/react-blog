@@ -1,26 +1,27 @@
-import { addPostCreator, updateNewPostTextCreator } from '../../../redux/reducers/profile'
+import { addPost, updateNewPostText } from '../../../redux/profile/profile'
 import MyPosts from './MyPosts'
 import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../../redux/store'
 
 const MyPostsContainer = () => {
   const dispatch = useDispatch()
-  const newPostText = useSelector((state) => state.profile.newPostText)
-  const posts = useSelector((state) => state.profile.posts)
+  const newPostText = useSelector((state: RootState) => state.profile.newPostText)
+  const posts = useSelector((state: RootState) => state.profile.posts)
 
-  const updateNewPostText = (text) => {
-    dispatch(updateNewPostTextCreator(text))
+  const updateText = (text: string) => {
+    dispatch(updateNewPostText(text))
   }
 
-  const addPost = () => {
-    dispatch(addPostCreator())
+  const addNewPost = () => {
+    dispatch(addPost())
   }
 
   return (
     <MyPosts
       newPostText={newPostText}
       posts={posts}
-      updateNewPostText={updateNewPostText}
-      addPost={addPost}
+      updateNewPostText={updateText}
+      addPost={addNewPost}
     />
   )
 }
