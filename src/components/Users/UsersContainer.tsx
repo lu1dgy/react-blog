@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { User } from '../../redux/users/types'
 import { RootState } from '../../redux/store'
 import { follow, unFollow, setUsers } from '../../redux/users/users'
-import Users from './Users'
+import UsersAPIComponent from './UsersAPIComponent'
 
 const UsersContainer: React.FC = () => {
   const dispatch = useDispatch()
@@ -18,7 +18,7 @@ const UsersContainer: React.FC = () => {
     dispatch(setUsers(users))
   }
   return (
-    <Users
+    <UsersAPIComponent
       unFollow={unFollowUser}
       follow={followUser}
       users={users}

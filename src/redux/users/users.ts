@@ -3,12 +3,10 @@ import { User } from './types'
 
 type UsersState = {
   users: User[]
-  newPostText: string
 }
 
 const initialState: UsersState = {
   users: [],
-  newPostText: '',
 }
 
 const usersSlice = createSlice({
