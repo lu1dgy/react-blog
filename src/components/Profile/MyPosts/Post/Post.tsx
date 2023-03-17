@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { memo } from 'react'
 import styles from './Post.module.css'
 
 type PostProps = {
   message: string
   likesCount: number
 }
-const Post: React.FC<PostProps> = ({ message, likesCount }) => {
+const Post: React.FC<PostProps> = memo(({ message, likesCount }) => {
+  console.log(1)
   return (
     <div className={styles.item}>
       <img
@@ -18,6 +19,6 @@ const Post: React.FC<PostProps> = ({ message, likesCount }) => {
       </div>
     </div>
   )
-}
+})
 
 export default Post

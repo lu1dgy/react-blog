@@ -3,10 +3,12 @@ import { User } from './types'
 
 type UsersState = {
   users: User[]
+  page: number
 }
 
 const initialState: UsersState = {
   users: [],
+  page: 1,
 }
 
 const usersSlice = createSlice({
@@ -22,8 +24,11 @@ const usersSlice = createSlice({
     setUsers: (state, action: PayloadAction<User[]>) => {
       state.users = [...state.users, ...action.payload]
     },
+    showMoreUsers: (state) => {
+      state.page++
+    },
   },
 })
 
-export const { follow, unFollow, setUsers } = usersSlice.actions
+export const { follow, unFollow, setUsers, showMoreUsers } = usersSlice.actions
 export default usersSlice.reducer

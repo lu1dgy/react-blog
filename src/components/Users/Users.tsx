@@ -1,26 +1,42 @@
 import React from 'react'
-
-import User from './User'
-import style from './Users.module.css'
 import { UsersProps } from './UsersAPIComponent'
 
-const Users: React.FC<UsersProps> = ({ users, ...restProps }) => {
+import style from './Users.module.css'
+import User from './User'
+
+const Users: React.FC<UsersProps> = ({ users, follow, unFollow, showMore }) => {
+  console.log(follow)
   return (
     <div className={style.userList}>
-      <div className={style.paginationButtons}>
+      {/* <div className={style.paginationButtons}>
         <button className={`${style.button} ${style.pickedButton}`}>1</button>
         <button className={style.button}>2</button>
         <button className={style.button}>3</button>
         <button className={style.button}>4</button>
         <button className={style.button}>5</button>
-      </div>
+      </div> */}
       {users.map((user) => (
         <User
           key={user.id}
           user={user}
-          {...restProps}
+          follow={follow}
+          unFollow={unFollow}
         />
       ))}
+      <button
+        className={style.showMoreButton}
+        onClick={() => {
+          showMore()
+        }}>
+        Show more
+      </button>
+      <button
+        className={style.backTop}
+        onClick={() => {
+          window.scrollTo(0, 0)
+        }}>
+        Go top
+      </button>
     </div>
   )
 }

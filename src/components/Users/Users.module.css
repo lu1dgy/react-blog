@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding-bottom: 300px;
 }
 
 .userAvatar {
@@ -69,4 +70,14 @@
 
 .pickedButton {
   background-color: yellow;
+}
+
+.showMoreButton {
+  width: 400px;
+  margin-top: 100px;
+  margin-left: 100px;
+  height: 50px;
+  border: 0;
+  background-color: antiquewhite;
+  border-radius: 5px;
 }
