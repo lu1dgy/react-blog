@@ -8,10 +8,14 @@ type DialogItemProps = {
 }
 const DialogItem: React.FC<DialogItemProps> = memo(({ id, name }) => {
   let path = '/dialogs/' + id
-
+  const activeUser = (link: { isActive?: boolean }) => (link.isActive ? styles.activeLink : '')
   return (
-    <div className={styles.dialog + ' ' + styles.active}>
-      <NavLink to={path}>{name}</NavLink>
+    <div className={styles.nameBlock}>
+      <NavLink
+        className={(link: { isActive?: boolean }) => activeUser(link)}
+        to={path}>
+        {name}
+      </NavLink>
     </div>
   )
 })

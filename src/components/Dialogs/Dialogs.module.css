@@ -3,12 +3,16 @@
     grid-template-columns: 2fr 10fr;
 }
 
-.dialogsItems {
-    padding: 10px;
-    color: white;
+.nameBlock a {
+    color: #000;
+    text-decoration: none;
 }
 
-.dialogsItems .active {
+.nameBlock {
+    padding: 10px;
+}
+
+.nameBlock .activeLink {
     color: gold;
 }
 
@@ -19,4 +23,3 @@
 .messages .message {
     color: white;
 }
-

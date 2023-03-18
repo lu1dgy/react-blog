@@ -30,6 +30,7 @@ const MyPosts: React.FC<MyPostsProps> = ({ posts, newPostText, addPost, updateNe
       <div>
         <div>
           <textarea
+            className={styles.newPostTextArea}
             onChange={onPostChange}
             value={newPostText}
           />

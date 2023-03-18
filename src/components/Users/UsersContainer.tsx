@@ -9,6 +9,7 @@ const UsersContainer: React.FC = () => {
   const dispatch = useDispatch()
   const users = useSelector((state: RootState) => state.users.users)
   const page = useSelector((state: RootState) => state.users.page)
+
   const followUser = (userId: number) => {
     dispatch(follow(userId))
   }

@@ -1,11 +1,12 @@
 import React from 'react'
 import styles from './Header.module.css'
-
+import logo from '../../assets/images/logo.png'
 const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <img
-        src='https://i.pinimg.com/550x/b5/bd/ff/b5bdff3fb5d52173cf7ccd260c8d05a3.jpg'
+        className={styles.headerLogo}
+        src={logo}
         alt='logo'
       />
     </header>

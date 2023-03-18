@@ -1,10 +1,11 @@
 import React from 'react'
 import MyPostsContainter from './MyPosts/MyPostsContainter'
 import ProfileInfo from './ProfileInfo/ProfileInfo'
+import styles from './Profile.module.css'
 
 const Profile: React.FC = () => {
   return (
-    <div>
+    <div className={styles.profileBlock}>
       <ProfileInfo />
       <MyPostsContainter />
     </div>

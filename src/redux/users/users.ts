@@ -31,4 +31,5 @@ const usersSlice = createSlice({
 })
 
 export const { follow, unFollow, setUsers, showMoreUsers } = usersSlice.actions
+
 export default usersSlice.reducer

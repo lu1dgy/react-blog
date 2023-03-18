@@ -1,9 +1,11 @@
 .header {
     grid-area: h;
-    background-color: green;
+    background-color: #fff;
 }
 
-.header img {
-    width: 20px;
-}
 
+.headerLogo {
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+}

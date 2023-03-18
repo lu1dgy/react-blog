@@ -9,7 +9,8 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding-bottom: 300px;
+  padding: 50px 0 50px 0;
+  width: 100%;
 }
 
 .userAvatar {
@@ -43,7 +44,8 @@
   border: 3px solid #000;
   border-radius: 5px;
   padding: 15px;
-  width: 400px;
+  width: 100%;
+  background-color: #fff;
 }
 
 .followBtn {
@@ -53,31 +55,22 @@
   color: #fff;
 }
 
-
-.paginationButtons {
-  display: flex;
-  justify-content: center;
-  padding-top: 20px;
-  gap: 7px;
-}
-
-.button {
-  width: 30px;
-  height: 30px;
-  border: 0;
-  border-radius: 50%;
-}
-
-.pickedButton {
-  background-color: yellow;
-}
-
 .showMoreButton {
-  width: 400px;
-  margin-top: 100px;
-  margin-left: 100px;
+  width: calc(100% - 20px);
+  max-width: 400px;
+  margin: 50px auto 25px auto;
   height: 50px;
   border: 0;
-  background-color: antiquewhite;
+  background-color: rgb(36, 164, 211);
+  border-radius: 5px;
+}
+
+.backTop {
+  width: calc(100% - 20px);
+  max-width: 400px;
+  margin: 0 auto 25px auto;
+  height: 50px;
+  border: 0;
+  background-color: rgb(36, 164, 211);
   border-radius: 5px;
 }
