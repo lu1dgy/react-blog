@@ -1,5 +1,5 @@
 import { addPost, updateNewPostText } from '../../../redux/profile/profile'
-import MyPosts from './MyPosts'
+import MyPosts from '.'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../redux/store'
 

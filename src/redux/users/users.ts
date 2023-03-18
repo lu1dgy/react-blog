@@ -4,11 +4,13 @@ import { User } from './types'
 type UsersState = {
   users: User[]
   page: number
+  isLoading: boolean
 }
 
 const initialState: UsersState = {
   users: [],
   page: 1,
+  isLoading: false,
 }
 
 const usersSlice = createSlice({
@@ -27,9 +29,12 @@ const usersSlice = createSlice({
     showMoreUsers: (state) => {
       state.page++
     },
+    toggleIsLoading: (state) => {
+      state.isLoading = !state.isLoading
+    },
   },
 })
 
-export const { follow, unFollow, setUsers, showMoreUsers } = usersSlice.actions
+export const { follow, unFollow, setUsers, showMoreUsers, toggleIsLoading } = usersSlice.actions
 
 export default usersSlice.reducer

@@ -1,11 +1,10 @@
 import React from 'react'
-import { UsersProps } from './UsersAPIComponent'
 
 import style from './Users.module.css'
 import User from './User'
+import { UsersProps } from './UsersContainer'
 
 const Users: React.FC<UsersProps> = ({ users, follow, unFollow, showMore }) => {
-  console.log(follow)
   return (
     <div className={style.userList}>
       {/* <div className={style.paginationButtons}>

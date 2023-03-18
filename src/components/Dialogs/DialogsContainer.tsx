@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { sendMessage, updateNewMessageText } from '../../redux/dialogs/dialogs'
 import { RootState } from '../../redux/store'
-import Dialogs from './Dialogs'
+import Dialogs from '.'
 
 const DialogsContainer = () => {
   const dispatch = useDispatch()

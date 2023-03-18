@@ -1,6 +1,6 @@
 import React from 'react'
 import MyPostsContainter from './MyPosts/MyPostsContainter'
-import ProfileInfo from './ProfileInfo/ProfileInfo'
+import ProfileInfo from './ProfileInfo'
 import styles from './Profile.module.css'
 
 const Profile: React.FC = () => {

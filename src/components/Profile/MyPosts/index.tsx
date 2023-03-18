@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './MyPosts.module.css'
-import PostComponent from './Post/Post'
+import PostComponent from './Post'
 import { Post } from '../../../redux/profile/types'
 
 type MyPostsProps = {

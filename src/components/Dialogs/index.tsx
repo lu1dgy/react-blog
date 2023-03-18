@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Dialogs.module.css'
-import DialogItem from './DialogItem/DialogItem'
-import Message from './Message/Message'
+import DialogItem from './DialogItem'
+import Message from './Message'
 import { DialogsState } from '../../redux/dialogs/types'
 
 type UsersBlockProps = {

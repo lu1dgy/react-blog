@@ -3,9 +3,9 @@ import { Route, Routes } from 'react-router-dom'
 
 import './App.css'
 
-import Navbar from './components/Navbar/Navbar'
-import Profile from './components/Profile/Profile'
-import Header from './components/Header/Header'
+import Navbar from './components/Navbar'
+import Profile from './components/Profile'
+import Header from './components/Header'
 import DialogsContainer from './components/Dialogs/DialogsContainer'
 import UsersContainer from './components/Users/UsersContainer'
 
