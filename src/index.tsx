@@ -15,5 +15,3 @@ root.render(
     </Provider>
   </BrowserRouter>
 )
-
-serviceWorker.unregister()
