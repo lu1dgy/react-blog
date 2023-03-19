@@ -41,8 +41,10 @@ const User: React.FC<UserProps> = ({ user, follow, unFollow }) => {
           </div>
           <div className={style.userInfo}>
             <div className={style.nameBlock}>
-              <h3>{user.name}</h3>
-              <p className={style.userStatus}>{user.status === null ? 'no status' : user.status}</p>
+              <NavLink to={'/profile/' + user.id}>
+                <h3>{user.name}</h3>
+              </NavLink>
+              <p className={style.userStatus}>Status: {user.status === null ? 'no status' : user.status}</p>
             </div>
             {/* <div className={style.locationBlock}>
               <p className={style.userCountry}>{user.location?.country}</p>

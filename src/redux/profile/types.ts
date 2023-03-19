@@ -5,17 +5,18 @@ export type Post = {
 }
 
 export type ProfilePage = {
-  fullName: string
+  name: string
   photos: {
     small: string
     large: string
   }
   userId: number
-  aboutMe: string
+  status: string
 }
 
 export type ProfileState = {
   posts: Post[]
   newPostText: string
   profile: ProfilePage
+  isLoading: boolean
 }

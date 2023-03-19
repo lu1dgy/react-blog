@@ -1,1 +1,1 @@
-export let usersOnPage = 20
+export let usersOnPage = 5

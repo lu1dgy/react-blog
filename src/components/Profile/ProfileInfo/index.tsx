@@ -27,8 +27,8 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ profile }) => {
         />
       </div>
       <div className={styles.descriptionBlock}>
-        <p className={styles.name}>{profile.fullName === null ? 'Full name' : profile.fullName}</p>
-        <p className={styles.status}>{profile.aboutMe === null ? 'No status' : profile.aboutMe}</p>
+        <p className={styles.name}>{profile.name === null ? 'Full name' : profile.name}</p>
+        <p className={styles.status}>{profile.status === null ? 'No status' : profile.status}</p>
       </div>
     </div>
   )

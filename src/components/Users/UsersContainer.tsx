@@ -6,7 +6,7 @@ import { RootState } from '../../redux/store'
 import { follow, setUsers, showMoreUsers, unFollow, toggleIsLoading } from '../../redux/users/users'
 import { User } from '../../redux/users/types'
 import { usersOnPage } from '../../utils/constants'
-import Users from './'
+import Users from '.'
 import Preloader from '../common/Preloader'
 
 export interface UsersProps {
@@ -52,10 +52,13 @@ const UsersContainer: React.FC = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       handleToggleIsLoading()
+      //https://social-network.samuraijs.com/api/1.0
       const response = await axios.get(
-        `https://social-network.samuraijs.com/api/1.0/users?count=${usersOnPage}&page=${page}`
+        `https://64174f8af86e3d55c739d015.mockapi.io/users?limit=${usersOnPage}&page=${page}`
       )
-      handleSetUsers(response.data.items)
+      console.log(response)
+
+      handleSetUsers(response.data)
       handleToggleIsLoading()
     }
     fetchUsers()

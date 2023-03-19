@@ -9,7 +9,7 @@ const Navbar: React.FC = () => {
       <ul className={styles.itemList}>
         <li className={styles.item}>
           <NavLink
-            to='/profile'
+            to='/profile/2'
             className={(link: { isActive?: boolean }) => activeLink(link)}>
             Profile
           </NavLink>

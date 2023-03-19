@@ -21,12 +21,16 @@ const App: React.FC = () => {
             element={<DialogsContainer />}
           />
           <Route
-            path='/profile/*'
+            path='/profile/:id'
             element={<ProfileContainer />}
           />
           <Route
             path='/users'
             element={<UsersContainer />}
+          />
+          <Route
+            path='*'
+            element={<div style={{ padding: '50px', fontSize: '50px' }}>This url is not valid</div>}
           />
         </Routes>
       </div>
