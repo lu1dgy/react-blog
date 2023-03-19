@@ -1,26 +1,26 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { sendMessage, updateNewMessageText } from '../../redux/dialogs/dialogs'
-import { RootState } from '../../redux/store'
 import Dialogs from '.'
+import { RootState } from '../../redux/store'
+import { sendMessage, updateNewMessageText } from '../../redux/dialogs/dialogs'
 
-const DialogsContainer = () => {
+const DialogsContainer: React.FC = () => {
   const dispatch = useDispatch()
   const dialogs = useSelector((state: RootState) => state.dialogs)
 
-  const actionSend = () => {
+  const handleSendMessage = () => {
     dispatch(sendMessage())
   }
 
-  const updateText = (text: string) => {
+  const handleUpdateNewMessageText = (text: string) => {
     dispatch(updateNewMessageText(text))
   }
 
   return (
     <Dialogs
       dialogs={dialogs}
-      sendMessage={actionSend}
-      updateNewMessageText={updateText}
+      sendMessage={handleSendMessage}
+      updateNewMessageText={handleUpdateNewMessageText}
     />
   )
 }

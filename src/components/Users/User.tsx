@@ -5,6 +5,7 @@ import { User as userProps } from '../../redux/users/types'
 
 import defaultAvatar from '../../assets/images/default-avatar.jpg'
 import style from './Users.module.css'
+import { NavLink } from 'react-router-dom'
 
 export type UserProps = {
   user: userProps
@@ -25,11 +26,13 @@ const User: React.FC<UserProps> = ({ user, follow, unFollow }) => {
       {inView && (
         <>
           <div className={style.imageBlock}>
-            <img
-              className={style.userAvatar}
-              alt='userImg'
-              src={user.photos.small === null ? defaultAvatar : user.photos.small}
-            />
+            <NavLink to={'/profile/' + user.id}>
+              <img
+                className={style.userAvatar}
+                alt='userImg'
+                src={user.photos.small === null ? defaultAvatar : user.photos.small}
+              />
+            </NavLink>
             <button
               className={style.followBtn}
               onClick={() => (user.followed ? unFollow(user.id) : follow(user.id))}>

@@ -31,14 +31,14 @@ const Navbar: React.FC = () => {
         <li className={styles.item}>
           <NavLink
             className={activeLink}
-            to='/'>
+            to='/music'>
             Music
           </NavLink>
         </li>
         <li className={styles.item}>
           <NavLink
             className={activeLink}
-            to='/1'>
+            to='/settings'>
             Settings
           </NavLink>
         </li>

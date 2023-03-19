@@ -1,4 +1,4 @@
-import { ProfileState } from './types'
+import { ProfilePage, ProfileState } from './types'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../store'
 
@@ -10,6 +10,15 @@ const initialState: ProfileState = {
     { id: 4, message: 'Dada', likesCount: 11 },
   ],
   newPostText: '',
+  profile: {
+    fullName: 'Loading...',
+    photos: {
+      small: 'https://www.polytec.com.au/img/products/960-960/mercurio-grey.jpg',
+      large: 'https://www.polytec.com.au/img/products/960-960/mercurio-grey.jpg',
+    },
+    userId: 1209521325219,
+    aboutMe: 'Loading...',
+  },
 }
 
 const profileSlice = createSlice({
@@ -28,10 +37,13 @@ const profileSlice = createSlice({
     updateNewPostText: (state, action: PayloadAction<string>) => {
       state.newPostText = action.payload
     },
+    setUserProfile: (state, action: PayloadAction<ProfilePage>) => {
+      state.profile = action.payload
+    },
   },
 })
 
-export const { addPost, updateNewPostText } = profileSlice.actions
+export const { addPost, updateNewPostText, setUserProfile } = profileSlice.actions
 
 export const selectProfile = (state: RootState) => state.profile
 

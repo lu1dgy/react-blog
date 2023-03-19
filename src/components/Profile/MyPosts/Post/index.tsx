@@ -6,7 +6,6 @@ type PostProps = {
   likesCount: number
 }
 const Post: React.FC<PostProps> = memo(({ message, likesCount }) => {
-  console.log(1)
   return (
     <div className={styles.item}>
       <img
